@@ -1,6 +1,7 @@
 const express = require('express');
 const mysql = require('mysql2');
 const bcrypt = require('bcrypt');
+const path = require('path');
 const app = express();
 app.use(express.json());
 
@@ -16,9 +17,12 @@ db.connect(err => {
     console.log('MySQL Connected...');
 });
 
+// Serve static files from the "public" directory
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Root URL route
 app.get('/', (req, res) => {
-    res.send('Welcome to the Registration API');
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.post('/register', async (req, res) => {
