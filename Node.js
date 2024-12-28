@@ -9,6 +9,14 @@ const db = mysql.createConnection({
     user: 'root',
     password: 'Vikram@210',
     database: 'registration_db'
+
+});
+
+const db = mysql.createConnection({
+    host: '52.72.129.133',
+    user: 'remote_user',
+    password: 'Ganesh@210',
+    database: 'registration_db'
 });
 
 db.connect(err => {
